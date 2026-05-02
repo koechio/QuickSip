@@ -36,11 +36,18 @@ class OrderPage extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  Expanded(
+                  /*Expanded(
                     child: Row(
                       children: [
-                        Text("Tip: "),
-                        Text("0.00"),
+                        Text(
+                          "Tip: ",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Spacer(),
+                        Text(
+                          "0.00",
+                          style: TextStyle(fontSize: 20),
+                          ),
                         IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -50,7 +57,9 @@ class OrderPage extends StatelessWidget {
                         ),
                         ],
                         ),
-                        ),
+                        ),  */
+
+                      OrderDetailRow(label:"Tip", value: "5.00", icon: Icons.arrow_back_ios_new),
 
                         Expanded(
                           child: Row(
@@ -97,5 +106,54 @@ class OrderPage extends StatelessWidget {
         
      ], ),),);
     
+  }
+}
+
+
+class OrderDetailRow extends StatelessWidget {
+  /*Creates a widget for the row item and the amount spent it to be for the checkout screen
+   Args:
+    label: the title of the charge e.g items, tax, tips
+    value: the amount charged
+    (optional)Icon: To be included at the end, used to make the tip editable
+
+  Returns: a widget for the row item and the amount spent it to be for the checkout screen
+
+  */ 
+    final String label;
+    final String value;
+    final IconData? icon;
+
+    const OrderDetailRow({
+    super.key, 
+    required this.label, 
+    required this.value,
+    this.icon});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+                    child: Row(
+                      children: [
+                        Text(
+                          "$label: ",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Spacer(),
+                        Text(
+                          value,
+                          style: TextStyle(fontSize: 20),
+                          ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            icon,
+                            color: Colors.black,
+                          ),
+                        ),
+                        ],
+                        ),
+                        );
   }
 }
