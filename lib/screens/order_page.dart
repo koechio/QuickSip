@@ -16,7 +16,7 @@ class OrderPage extends StatelessWidget {
               // This is the flexbox for the place your order button at the top
               flex: 1,
               child: SizedBox(
-                width: double.infinity,
+                width: 0.5 * double.infinity,
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -31,6 +31,9 @@ class OrderPage extends StatelessWidget {
             Expanded(
               // This is the middle section listing out the prices, tips and total
               flex: 3,
+              child: Container(
+                margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Expanded(
@@ -84,7 +87,7 @@ class OrderPage extends StatelessWidget {
                 ]
                       //Expanded(child: child)
                     ),
-                  ),
+                  ),),
                 
               
             
