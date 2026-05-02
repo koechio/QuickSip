@@ -36,62 +36,14 @@ class OrderPage extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  /*Expanded(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Tip: ",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        Spacer(),
-                        Text(
-                          "0.00",
-                          style: TextStyle(fontSize: 20),
-                          ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.arrow_back_ios_new,
-                            color: Colors.black,
-                          ),
-                        ),
-                        ],
-                        ),
-                        ),  */
-
+                 
                       OrderDetailRow(label:"Tip", value: "5.00", icon: Icons.arrow_back_ios_new),
 
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Text("Items: "),
-                              Text("0.00"),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.arrow_back_ios_new,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                       
+                        OrderDetailRow(label: "Items", value: "20.00"),
 
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Text("Total: "),
-                              Text("0.00"),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.arrow_back_ios_new,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                       
+                        OrderDetailRow(label: "Total", value: "25.00"),
                       
                 ]
                       //Expanded(child: child)
@@ -145,12 +97,17 @@ class OrderDetailRow extends StatelessWidget {
                           value,
                           style: TextStyle(fontSize: 20),
                           ),
-                        IconButton(
+                       SizedBox(
+                        width: 48 ,
+                        child: icon != null
+                        ? IconButton(
                           onPressed: () {},
                           icon: Icon(
                             icon,
                             color: Colors.black,
                           ),
+                          
+                        ): const SizedBox.shrink(),
                         ),
                         ],
                         ),
