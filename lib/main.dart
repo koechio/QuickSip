@@ -1,15 +1,14 @@
-//import 'package:coffee_card/screens/coffee_details.dart';
-import 'package:coffee_card/screens/order_page.dart';
+import 'package:coffee_card/screens/coffee_details.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    // MaterialApp(
-    //  title: "Coffee Page",
-    //   home: CoffeeDetailsPage(),
-     MaterialApp(
+    MaterialApp(
      title: "Coffee Page",
-      home: OrderPage(),));
+      home: CoffeeDetailsPage(),));
+    //  MaterialApp(
+    //  title: "Coffee Page",
+    //   home: OrderPage(),));
       
       
   //     MaterialApp(

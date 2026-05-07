@@ -16,7 +16,7 @@ class OrderPage extends StatelessWidget {
               // This is the flexbox for the place your order button at the top
               flex: 1,
               child: SizedBox(
-                width: 0.5 * double.infinity,
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
