@@ -1,9 +1,0 @@
-coffee_backend/node_modules/
-coffee_backend/.env
-coffee_backend/dist/
-coffee_card/build/
-coffee_card/.dart_tool/
-coffee_card/.packages
-coffee_card/.pub/
-.DS_Store
-Thumbs.db
