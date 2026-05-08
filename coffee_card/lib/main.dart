@@ -1,11 +1,14 @@
-import 'package:coffee_card/screens/coffee_details.dart';
+
+//import 'package:coffee_card/screens/coffee_details.dart';
+import 'package:coffee_card/screens/login.dart';
+//import 'package:coffee_card/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     MaterialApp(
      title: "Coffee Page",
-      home: CoffeeDetailsPage(),));
+      home: LoginPage(),));
     //  MaterialApp(
     //  title: "Coffee Page",
     //   home: OrderPage(),));
