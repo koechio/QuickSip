@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'auth_widgets.dart';
+import 'services/auth_service.dart';
 
 /// A page that allows new users to create an account by providing credentials.
-/// 
-/// This widget provides a structured interface for entering an email, 
-/// password, and password confirmation. It relies on external reusable 
+///
+/// This widget provides a structured interface for entering an email,
+/// password, and password confirmation. It relies on external reusable
 /// components to maintain visual consistency with the Login screen.
-/// 
-/// This is a stateless widget; it does not persist user data or manage 
-/// authentication state directly. It triggers the [onTap] callback of the 
+///
+/// This is a stateless widget; it does not persist user data or manage
+/// authentication state directly. It triggers the [onTap] callback of the
 /// primary button to initiate registration logic.
-/// 
-/// For edge cases, such as the keyboard obscuring input fields, the layout 
-/// is wrapped in a [SingleChildScrollView]. It does not perform internal 
-/// string validation (e.g., regex for emails); this should be handled 
+///
+/// For edge cases, such as the keyboard obscuring input fields, the layout
+/// is wrapped in a [SingleChildScrollView]. It does not perform internal
+/// string validation (e.g., regex for emails); this should be handled
 /// within the button's [onTap] logic or a Form state.
-/// 
+///
 /// ```dart
 /// Navigator.push(
 ///   context,
 ///   MaterialPageRoute(builder: (context) => const RegisterPage()),
 /// );
 /// ```
-/// 
+///
 /// **Parameters**
 /// * [key]: Standard Flutter widget key.
-/// 
+///
 /// **Returns**
 /// * A [Scaffold] containing the registration form layout.
 class RegisterPage extends StatelessWidget {
@@ -37,6 +38,7 @@ class RegisterPage extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     final confirmPasswordController = TextEditingController();
+    final authService = AuthService();
 
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -83,11 +85,31 @@ class RegisterPage extends StatelessWidget {
                 // Sign Up Button
                 MyButton(
                   text: "Sign Up",
-                  onTap: () {
+                  onTap: () async{
+                    final password = passwordController.text;
+                    final confirmPassword = confirmPasswordController.text;
+
+                    if (password != confirmPassword) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('passwords do not match!'),
+                        ),
+                      );
+                      return; // stop here! don't call the server.
+                    }
+
+                    final message = await authService.signup(
+                            emailController.text, 
+                            password,
+                          );
+                          
+                          print('server response: $message');
+                        },
+
                     // Add registration logic here:
                     // 1. Check if passwords match
                     // 2. Call auth service
-                  },
+                  
                 ),
 
                 const SizedBox(height: 50),
